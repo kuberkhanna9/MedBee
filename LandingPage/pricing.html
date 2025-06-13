@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pricing - Medbee</title>
+        <meta name="description" content="Simple, transparent pricing for Medbee" />
+        <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="Medbee Pricing" />
+        <meta property="og:description" content="Simple, transparent pricing for Medbee" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://medbee.com/pricing" />
+        <meta property="og:image" content="" />
+
+        <link rel="stylesheet" href="./css/tailwind-build.css" />
+        <link rel="stylesheet" href="css/index.css" />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+            integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fff]">
+        <!-- Header -->
+        <header
+            class="tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 
+                    tw-px-[5%] max-lg:tw-mr-auto max-lg:tw-px-4 lg:tw-justify-around"
+        >
+            <a class="tw-h-[150px] tw-w-[500px] tw-p-[4px]" href="index.html">
+                <img
+                    src="./assets/logo.png"
+                    alt="Medbee"
+                    class="tw-h-full tw-w-full tw-object-contain"
+                />
+            </a>
+            <div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
+                <div
+                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base tw-text-black 
+                            max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end 
+                            max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
+                >
+                    <a class="header-links" href="about.html"> About us </a>
+                    <a class="header-links" href="pricing.html"> Pricing </a>
+                    <a class="header-links" href="features.html"> Features </a>
+                    <a class="header-links" href="blog.html"> Blog </a>
+                    <a class="header-links" href="contact.html"> Contact us </a>
+                </div>
+                <div
+                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base 
+                            max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <a
+                        href=""
+                        aria-label="signup"
+                        class="tw-flex tw-h-[40px] tw-place-items-center tw-gap-2 tw-rounded-full
+                                tw-bg-black tw-p-1 tw-pl-4 tw-text-white"
+                    >
+                        <span>Download</span>
+                        <div
+                            class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center 
+                                    tw-place-items-center tw-rounded-full tw-bg-primary 
+                                    tw-font-semibold tw-text-black"
+                        >
+                            <i class="bi bi-download"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button
+                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl 
+                        tw-text-black lg:tw-hidden"
+                onclick="toggleHeader()"
+                aria-label="menu"
+                id="collapse-btn"
+            ></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="tw-mt-[60px] tw-flex tw-flex-col tw-gap-16 tw-py-16">
+            <!-- Hero Section -->
+            <section class="tw-container tw-mx-auto tw-px-4 tw-py-16">
+                <div class="tw-text-center">
+                    <h1 class="tw-mb-6 tw-text-5xl tw-font-bold">Simple, Transparent Pricing</h1>
+                    <p class="tw-mx-auto tw-max-w-3xl tw-text-xl tw-text-gray-600">
+                        Choose the plan that's right for your family. All plans include our core features.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Pricing Cards -->
+            <section class="tw-container tw-mx-auto tw-px-4">
+                <div class="tw-grid tw-grid-cols-1 tw-gap-8 md:tw-grid-cols-3">
+                    <!-- Basic Plan -->
+                    <div class="tw-flex tw-flex-col tw-rounded-xl tw-bg-white tw-p-8 tw-shadow-lg">
+                        <div class="tw-mb-8">
+                            <h3 class="tw-mb-2 tw-text-2xl tw-font-bold">Basic</h3>
+                            <div class="tw-mb-4 tw-flex tw-items-baseline">
+                                <span class="tw-text-4xl tw-font-bold">Free</span>
+                                <span class="tw-ml-2 tw-text-gray-600">/month</span>
+                            </div>
+                            <p class="tw-text-gray-600">Perfect for individuals starting their health journey</p>
+                        </div>
+                        <ul class="tw-mb-8 tw-space-y-4">
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>1 User Profile</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Basic AI Summaries</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>500MB Storage</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="tw-mt-auto tw-rounded-full tw-bg-gray-100 tw-py-3 tw-px-6 tw-text-center tw-text-gray-800 hover:tw-bg-gray-200 tw-transition-colors">
+                            Get Started
+                        </a>
+                    </div>
+
+                    <!-- Family Plan -->
+                    <div class="tw-relative tw-flex tw-flex-col tw-rounded-xl tw-border-2 tw-border-primary tw-bg-blue-50 tw-p-8 tw-shadow-lg">
+                        <div class="tw-absolute tw-right-0 tw-top-0 tw-mt-4 tw-mr-4">
+                            <span class="tw-rounded-full tw-bg-primary tw-px-3 tw-py-1 tw-text-sm tw-text-white">Popular</span>
+                        </div>
+                        <div class="tw-mb-8">
+                            <h3 class="tw-mb-2 tw-text-2xl tw-font-bold">Family</h3>
+                            <div class="tw-mb-4 tw-flex tw-items-baseline">
+                                <span class="tw-text-4xl tw-font-bold">$9.99</span>
+                                <span class="tw-ml-2 tw-text-gray-600">/month</span>
+                            </div>
+                            <p class="tw-text-gray-600">Best value for families</p>
+                        </div>
+                        <ul class="tw-mb-8 tw-space-y-4">
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Up to 5 User Profiles</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Advanced AI Summaries</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>5GB Storage</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Priority Support</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="tw-mt-auto tw-rounded-full tw-bg-primary tw-py-3 tw-px-6 tw-text-center tw-text-white hover:tw-bg-blue-600 tw-transition-colors">
+                            Start Free Trial
+                        </a>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="tw-flex tw-flex-col tw-rounded-xl tw-bg-white tw-p-8 tw-shadow-lg">
+                        <div class="tw-mb-8">
+                            <h3 class="tw-mb-2 tw-text-2xl tw-font-bold">Premium</h3>
+                            <div class="tw-mb-4 tw-flex tw-items-baseline">
+                                <span class="tw-text-4xl tw-font-bold">$19.99</span>
+                                <span class="tw-ml-2 tw-text-gray-600">/month</span>
+                            </div>
+                            <p class="tw-text-gray-600">For large families with advanced needs</p>
+                        </div>
+                        <ul class="tw-mb-8 tw-space-y-4">
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Unlimited User Profiles</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Premium AI Features</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Unlimited Storage</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>24/7 Priority Support</span>
+                            </li>
+                            <li class="tw-flex tw-items-center">
+                                <i class="bi bi-check-circle-fill tw-mr-2 tw-text-primary"></i>
+                                <span>Custom Integrations</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="tw-mt-auto tw-rounded-full tw-bg-gray-100 tw-py-3 tw-px-6 tw-text-center tw-text-gray-800 hover:tw-bg-gray-200 tw-transition-colors">
+                            Contact Sales
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="tw-container tw-mx-auto tw-px-4">
+                <h2 class="tw-mb-8 tw-text-center tw-text-3xl tw-font-bold">Frequently Asked Questions</h2>
+                <div class="tw-mx-auto tw-max-w-3xl tw-space-y-6">
+                    <div class="tw-rounded-lg tw-bg-gray-50 tw-p-6">
+                        <h3 class="tw-mb-2 tw-text-xl tw-font-semibold">Can I switch plans anytime?</h3>
+                        <p class="tw-text-gray-600">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+                    </div>
+                    <div class="tw-rounded-lg tw-bg-gray-50 tw-p-6">
+                        <h3 class="tw-mb-2 tw-text-xl tw-font-semibold">Is there a free trial?</h3>
+                        <p class="tw-text-gray-600">Yes, all paid plans come with a 14-day free trial. No credit card required to start.</p>
+                    </div>
+                    <div class="tw-rounded-lg tw-bg-gray-50 tw-p-6">
+                        <h3 class="tw-mb-2 tw-text-xl tw-font-semibold">What payment methods do you accept?</h3>
+                        <p class="tw-text-gray-600">We accept all major credit cards, debit cards, and digital payment methods including PayPal.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-text-black max-md:tw-flex-col">
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full">
+                <img src="./assets/logo.png" alt="logo" class="tw-max-w-[120px]" />
+                <div class="tw-mt-3 tw-text-lg tw-font-semibold">Follow us</div>
+                <div class="tw-flex tw-gap-4 tw-text-2xl">
+                    <a href="" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/@pauls_freeman" aria-label="Twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/" class="tw-h-[40px] tw-w-[40px]" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">Company</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">Resources</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <a href="about.html" class="footer-link">About us</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                    <a href="privacy.html" class="footer-link">Privacy policy</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./index.js"></script>
+    </body>
+</html> 
