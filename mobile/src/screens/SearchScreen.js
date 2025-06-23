@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios';
-import { GOOGLE_MAPS_API_KEY } from '../config/keys';
+import { GOOGLE_MAPS_CONFIG } from '../config/api';
 
 const SearchScreen = ({ route, navigation }) => {
   const [searchQuery, setSearchQuery] = useState(route.params?.searchQuery || '');
@@ -68,7 +68,7 @@ const SearchScreen = ({ route, navigation }) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=doctor&keyword=doctor&key=${GOOGLE_MAPS_API_KEY}`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=doctor&keyword=doctor&key=${GOOGLE_MAPS_CONFIG.API_KEY}`
       );
 
       if (response.data.results) {
@@ -101,7 +101,7 @@ const SearchScreen = ({ route, navigation }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${text}+doctor&location=${region.latitude},${region.longitude}&radius=5000&key=${GOOGLE_MAPS_API_KEY}`
+          `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${text}+doctor&location=${region.latitude},${region.longitude}&radius=5000&key=${GOOGLE_MAPS_CONFIG.API_KEY}`
         );
 
         if (response.data.results) {

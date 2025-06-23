@@ -1,46 +1,41 @@
 {
   "expo": {
-    "name": "UoBD-Project",
-    "slug": "UoBD-Project",
+    "name": "MedBee",
+    "slug": "MedBee",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.uobd.project",
-      "config": {
-        "googleMapsApiKey": "AIzaSyAdZQH_z95W_Y8hPHUnMkO10w2i6k4FRxw"
-      }
+      "googleMapsApiKey": "YOUR_GOOGLE_MAPS_API_KEY_HERE"
     },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
       "package": "com.uobd.project",
-      "permissions": [
-        "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION",
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION"
-      ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyAdZQH_z95W_Y8hPHUnMkO10w2i6k4FRxw"
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY_HERE"
         }
       }
     },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
     "plugins": [
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
-        }
-      ]
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "c72340f6-7679-4d50-8625-95e74796ea7f"
-      }
-    }
+      "expo-document-picker"
+    ]
   }
 }

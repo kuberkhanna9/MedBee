@@ -21,9 +21,8 @@ import Modal from 'react-native-modal';
 import axios from 'axios';
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
-import { GEMINI_CONFIG } from '../config/api';
+import { GEMINI_CONFIG, GOOGLE_MAPS_CONFIG } from '../config/api';
 import { useProfile } from '../context/ProfileContext';
-import { GOOGLE_MAPS_API_KEY } from '../config/keys';
 
 const { width } = Dimensions.get('window');
 
@@ -231,7 +230,7 @@ const DashboardScreen = ({ navigation }) => {
     setLocationLoading(true);
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationInput)}&key=${GOOGLE_MAPS_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationInput)}&key=${GOOGLE_MAPS_CONFIG.API_KEY}`
       );
       if (response.data.results && response.data.results.length > 0) {
         const loc = response.data.results[0].geometry.location;
