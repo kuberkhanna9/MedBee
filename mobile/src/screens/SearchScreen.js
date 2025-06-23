@@ -13,9 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios';
-import { GOOGLE_MAPS_CONFIG } from '../config/api';
-
-const GOOGLE_MAPS_API_KEY = GOOGLE_MAPS_CONFIG.API_KEY;
+import { GOOGLE_MAPS_API_KEY } from '../config/keys';
 
 const SearchScreen = ({ route, navigation }) => {
   const [searchQuery, setSearchQuery] = useState(route.params?.searchQuery || '');

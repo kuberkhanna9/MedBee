@@ -1,75 +1,104 @@
-# UoBD Project - Healthcare Mobile App
+# MedBee - AI-Powered Healthcare Management Platform
 
-A comprehensive healthcare mobile application built with React Native, featuring doctor search, health metrics tracking, and AI-powered health assistance.
+MedBee is a comprehensive healthcare management platform that leverages artificial intelligence to streamline medical record management, improve patient care, and enhance healthcare provider efficiency.
 
-## Features
+## 🌟 Features
 
-- Doctor search by specialty
-- Health metrics tracking
-- AI health assistant
-- Medical records management
-- Vaccination records
-- Interactive maps integration
-- Real-time chat with health professionals
+- **AI-Powered Medical Record Management**
+  - Intelligent document processing
+  - Automated medical record summarization
+  - Smart categorization and organization
 
-## Setup Instructions
+- **User-Friendly Interface**
+  - Clean, modern design
+  - Intuitive navigation
+  - Responsive layout for all devices
+
+- **Secure Data Management**
+  - HIPAA-compliant storage
+  - End-to-end encryption
+  - Role-based access control
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- Modern web browser
+
+### Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/UoBD-Project.git
-cd UoBD-Project
-```
+   ```bash
+   git clone https://github.com/yourusername/MedBee.git
+   cd MedBee
+   ```
 
 2. Install dependencies:
-```bash
-npm install
-```
-
-3. Environment Setup:
-   - Create a `.env` file in the root directory
-   - Add your API keys:
-   ```
-   GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
-   GEMINI_API_KEY=your_gemini_api_key_here
+   ```bash
+   npm install
    ```
 
-4. Run the development server:
-```bash
-npm start
-```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-## Environment Variables
-
-The following environment variables are required:
-
-- `GOOGLE_MAPS_API_KEY`: Google Maps API key for location services
-- `GEMINI_API_KEY`: Gemini API key for AI health assistant
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-UoBD-Project/
-├── mobile/              # React Native app
-│   ├── src/
-│   │   ├── screens/    # Screen components
-│   │   ├── config/     # Configuration files
-│   │   ├── context/    # React Context
-│   │   └── navigation/ # Navigation setup
-│   ├── assets/         # Images and assets
-│   └── App.js          # Root component
-└── backend/            # Backend services
+MedBee/
+├── LandingPage/           # Marketing website
+│   ├── assets/           # Images and static files
+│   ├── css/             # Stylesheets
+│   └── js/              # JavaScript files
+├── AISales/             # AI Sales application
+│   ├── src/             # Source code
+│   └── public/          # Public assets
+└── medbee/              # Main application
+    ├── src/             # Source code
+    └── public/          # Public assets
 ```
 
-## Contributing
+## 🛠️ Technology Stack
 
-1. Create a new branch for your feature
-2. Make your changes
-3. Submit a pull request
+- Frontend:
+  - React.js
+  - Tailwind CSS
+  - Bootstrap Icons
+  - Material Icons
 
-## Security Note
+- Backend:
+  - Node.js
+  - Express.js
+  - MongoDB
 
-Never commit sensitive information like API keys directly to the repository. Always use environment variables for sensitive data.
+- AI/ML:
+  - TensorFlow.js
+  - Natural Language Processing
+  - Computer Vision
 
-## License
+## 🤝 Contributing
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+For any queries or support, please reach out to:
+- Email: support@medbee.com
+- Website: https://medbee.com
+
+## 🙏 Acknowledgments
+
+- All contributors who have helped shape MedBee
+- Open source community for their invaluable tools and libraries
+- Healthcare professionals for their insights and feedback 

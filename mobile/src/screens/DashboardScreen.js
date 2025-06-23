@@ -21,15 +21,14 @@ import Modal from 'react-native-modal';
 import axios from 'axios';
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
-import { GEMINI_CONFIG, GOOGLE_MAPS_CONFIG } from '../config/api';
+import { GEMINI_CONFIG } from '../config/api';
 import { useProfile } from '../context/ProfileContext';
+import { GOOGLE_MAPS_API_KEY } from '../config/keys';
 
 const { width } = Dimensions.get('window');
 
 const TOP_BAR_HEIGHT = 60;
 const SEARCH_BAR_HEIGHT = 60;
-
-const GOOGLE_MAPS_API_KEY = GOOGLE_MAPS_CONFIG.API_KEY;
 
 const doctorCategories = [
   { 
