@@ -1,6 +1,6 @@
-# MedBee - AI-Powered Healthcare Management Platform
+# Medique - AI-Powered Healthcare Management Platform
 
-MedBee is a comprehensive healthcare management platform that leverages artificial intelligence to streamline medical record management, improve patient care, and enhance healthcare provider efficiency.
+Medique is a comprehensive healthcare management platform that leverages artificial intelligence to streamline medical record management, improve patient care, and enhance healthcare provider efficiency.
 
 ## 🌟 Features
 
@@ -94,8 +94,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 
 For any queries or support, please reach out to:
-- Email: support@medbee.com
-- Website: https://medbee.com
+- Email: medique.in@gmail.com
+- Website: https://medique.in
 
 ## 🙏 Acknowledgments
 
