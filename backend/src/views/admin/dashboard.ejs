@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedBee Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <div class="flex-shrink-0 flex items-center">
+              <h1 class="text-xl font-bold">MedBee Admin</h1>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm text-gray-500">Last updated: <span id="lastUpdate">-</span></span>
+            <a href="/admin/logout" class="text-gray-500 hover:text-gray-700">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <% if (typeof error !== 'undefined') { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <strong class="font-bold">Error!</strong>
+          <span class="block sm:inline"><%= error %></span>
+        </div>
+      <% } %>
+
+      <!-- System Status -->
+      <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
+        <div class="px-4 py-5 sm:p-6">
+          <h2 class="text-lg font-semibold mb-4">System Status</h2>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="flex items-center">
+              <div class="w-3 h-3 rounded-full <%= systemStatus.backend ? 'bg-green-500' : 'bg-red-500' %> mr-2"></div>
+              <span>Backend: <%= systemStatus.backend ? 'Online' : 'Offline' %></span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 rounded-full <%= systemStatus.database ? 'bg-green-500' : 'bg-red-500' %> mr-2"></div>
+              <span>Database: <%= systemStatus.database ? 'Connected' : 'Disconnected' %></span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 rounded-full <%= systemStatus.frontend ? 'bg-green-500' : 'bg-red-500' %> mr-2"></div>
+              <span>Frontend: <%= systemStatus.frontend ? 'Online' : 'Offline' %></span>
+            </div>
+            <div class="text-sm text-gray-500">
+              Last checked: <%= new Date(systemStatus.lastChecked).toLocaleString() %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Overview -->
+      <div class="mb-6">
+        <h2 class="text-lg font-medium text-gray-900 mb-4">User Overview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">Total Users</p>
+            <p id="totalUsers" class="text-2xl font-bold">-</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">Admin Users</p>
+            <p id="adminUsers" class="text-2xl font-bold">-</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">Regular Users</p>
+            <p id="regularUsers" class="text-2xl font-bold">-</p>
+          </div>
+        </div>
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+          <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">User List</h3>
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Login</th>
+                  </tr>
+                </thead>
+                <tbody id="userTable" class="bg-white divide-y divide-gray-200">
+                  <!-- User rows will be inserted here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Chat Overview -->
+      <div class="mb-6">
+        <h2 class="text-lg font-medium text-gray-900 mb-4">AI Chat Overview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">Total Chat Requests</p>
+            <p id="totalChats" class="text-2xl font-bold">-</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">Last 7 Days</p>
+            <p id="recentChats" class="text-2xl font-bold">-</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="text-sm text-gray-500">AI Responses</p>
+            <p id="aiResponses" class="text-2xl font-bold">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Request Overview -->
+      <div class="mb-6">
+        <h2 class="text-lg font-medium text-gray-900 mb-4">API Request Overview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Request Distribution</h3>
+            <canvas id="apiRequestChart"></canvas>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Latest Requests</h3>
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Endpoint</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="requestTable" class="bg-white divide-y divide-gray-200">
+                  <!-- Request rows will be inserted here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let apiRequestChart;
+
+    // Format date for display
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleString();
+    }
+
+    // Update system status indicators
+    function updateSystemStatus(status) {
+      const statusClasses = {
+        true: 'bg-green-500',
+        false: 'bg-red-500'
+      };
+
+      document.querySelector('#backendStatus .rounded-full').className = 
+        `w-3 h-3 rounded-full mr-2 ${statusClasses[status.backend]}`;
+      document.querySelector('#databaseStatus .rounded-full').className = 
+        `w-3 h-3 rounded-full mr-2 ${statusClasses[status.database]}`;
+      document.querySelector('#frontendStatus .rounded-full').className = 
+        `w-3 h-3 rounded-full mr-2 ${statusClasses[status.frontend]}`;
+      document.querySelector('#lastChecked span:last-child').textContent = 
+        formatDate(status.lastChecked);
+    }
+
+    // Update user statistics
+    function updateUserStats(stats) {
+      document.getElementById('totalUsers').textContent = stats.total;
+      document.getElementById('adminUsers').textContent = stats.admins;
+      document.getElementById('regularUsers').textContent = stats.users;
+    }
+
+    // Update user table
+    function updateUserTable(users) {
+      const tbody = document.getElementById('userTable');
+      tbody.innerHTML = users.map(user => `
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${user.name || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${user.email}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${user.role}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(user.createdAt)}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${user.lastLogin ? formatDate(user.lastLogin) : 'Never'}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Update chat statistics
+    function updateChatStats(stats) {
+      document.getElementById('totalChats').textContent = stats.total;
+      document.getElementById('recentChats').textContent = stats.lastSevenDays;
+      document.getElementById('aiResponses').textContent = stats.aiResponses;
+    }
+
+    // Update API request chart
+    function updateApiChart(data) {
+      if (apiRequestChart) {
+        apiRequestChart.destroy();
+      }
+
+      const ctx = document.getElementById('apiRequestChart').getContext('2d');
+      apiRequestChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: data.dates,
+          datasets: [
+            {
+              label: 'GET Requests',
+              data: data.methods.GET,
+              backgroundColor: 'rgba(59, 130, 246, 0.5)',
+              borderColor: 'rgb(59, 130, 246)',
+              borderWidth: 1
+            },
+            {
+              label: 'POST Requests',
+              data: data.methods.POST,
+              backgroundColor: 'rgba(16, 185, 129, 0.5)',
+              borderColor: 'rgb(16, 185, 129)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    // Update request table
+    function updateRequestTable(requests) {
+      const tbody = document.getElementById('requestTable');
+      tbody.innerHTML = requests.map(req => `
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(req.timestamp)}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${req.method}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${req.endpoint}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+              ${req.responseStatus < 400 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+              ${req.responseStatus}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Fetch and update all metrics
+    async function fetchMetrics() {
+      try {
+        const response = await fetch('/admin/api/metrics');
+        const data = await response.json();
+
+        if (data.success) {
+          const metrics = data.data;
+          
+          // Update all sections
+          updateSystemStatus(metrics.systemStatus);
+          updateUserStats(metrics.userStats);
+          updateUserTable(metrics.latestUsers);
+          updateChatStats(metrics.chatStats);
+          updateApiChart(metrics.apiStats);
+          updateRequestTable(metrics.latestRequests);
+
+          // Update last refresh time
+          document.getElementById('lastUpdate').textContent = formatDate(metrics.timestamp);
+        }
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+      }
+    }
+
+    // Initial fetch
+    fetchMetrics();
+
+    // Refresh every 30 seconds
+    setInterval(fetchMetrics, 30000);
+  </script>
+</body>
+</html> 
